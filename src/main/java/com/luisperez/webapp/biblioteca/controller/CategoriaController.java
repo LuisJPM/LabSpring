@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luisperez.webapp.biblioteca.model.Categoria;
@@ -21,19 +22,19 @@ import com.luisperez.webapp.biblioteca.service.CategoriaService;
 
 @Controller 
 @RestController 
-@RequestMapping("categoria")
+@RequestMapping("")
 public class CategoriaController {
 
     @Autowired
     CategoriaService categoriaService;
 
-    @GetMapping("/")
+    @GetMapping("/categorias")
     public List<Categoria> listaCategorias(){
         return categoriaService.listaCategorias();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Categoria> buscarCategoriaPorId(@PathVariable Long id){
+    @GetMapping("/categoria")
+    public ResponseEntity<Categoria> buscarCategoriaPorId(@RequestParam Long id){
         try {
            Categoria categoria = categoriaService.buscarCategoriaPorId(id);
            return ResponseEntity.ok(categoria); 
@@ -42,7 +43,7 @@ public class CategoriaController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/categoria")
     public ResponseEntity<Map<String, String>> agregarCategoria(@RequestBody Categoria categoria){
         Map<String, String> response = new HashMap<>();
        try{
@@ -56,7 +57,7 @@ public class CategoriaController {
        }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/categoria")
     public ResponseEntity<Map<String, String>> editarCategoria(@PathVariable Long id, @RequestBody Categoria categoriaNueva){
         Map<String, String> response = new HashMap<>();
         try {
@@ -72,7 +73,7 @@ public class CategoriaController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/categoria")
     public ResponseEntity<Map<String, String>> eliminarCategoria(@PathVariable Long id){
         Map<String, String> response = new HashMap<>();
         try {
