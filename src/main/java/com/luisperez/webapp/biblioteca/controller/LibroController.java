@@ -49,7 +49,7 @@ public class LibroController {
         }
     }
 
-    @GetMapping()
+    @GetMapping("/libro")
     public ResponseEntity<Libro> buscarLibro(@RequestParam Long id){
         try{
             return ResponseEntity.ok(libroService.buscarLibroPorId(id));

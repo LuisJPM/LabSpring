@@ -10,10 +10,10 @@ import jakarta.persistence.Id;
 @Table(name = "Empleados") 
 public class Empleado {
         @Id
-        private Long dpi;
+        private Long id;
         private String nombre;
         private String apellido;
         private String telefono;
         private String direccion;
-        
+        private String dpi;
 }
